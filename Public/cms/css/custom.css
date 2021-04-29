@@ -1,0 +1,18 @@
+.mt-5{
+    margin-top: 2rem;
+}
+.mb-5{
+    margin-top: 2rem;
+}
+
+.logo-mobile{
+    display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .logo-mobile{
+        display: inline-block;
+        margin-right: 100px !important;
+    }
+  }
