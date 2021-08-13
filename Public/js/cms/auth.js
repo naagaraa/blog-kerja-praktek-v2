@@ -1,3 +1,4 @@
+// run login function
 $(document).ready(function () {
    $('#login').submit(function (e) { 
        e.preventDefault();
@@ -6,11 +7,14 @@ $(document).ready(function () {
 });
 
 
+// function login ajax js
 function login() 
 {
     let username, passowrd;
     username = $('#username').val();
     passowrd = $('#password').val();
+
+    console.log(auth);
 
     // form validation dengan jquery javascript
     if (username !== '' && passowrd !== '') {
@@ -26,14 +30,15 @@ function login()
             contentType: false,
             dataType: 'json',
             success: function (response) {
+                console.log(response);
                 if (response.success == true) {
                     berhasil_login(response.message)
                 } else if (response.success == false){
                     gagal_login(response.message);
                 }
             },
-            error: function (e) {
-                console(e.message);
+            error: function (error) {
+                console.log(error);
             }
         });
     }else if (username == "" || password == "") 

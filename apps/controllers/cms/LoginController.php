@@ -45,7 +45,7 @@ class LoginController extends Controller
 			];
 		} else {
 			$data = $this->model('User_model')->getUser($username, $password);		 // check user login
-			if ($username == $data['user_name'] && $password == $data['passw']) {
+			if ($data == true) {
 				if ($data['status'] == 1) {
 					// cek login
 					$_SESSION['login'] = TRUE;
@@ -69,7 +69,7 @@ class LoginController extends Controller
 			} else {
 				$message = [
 					"success" => false,
-					"message" => 'username atau password anda salah'
+					"message" => 'username atau password anda salah atau tidak terdaftar'
 				];
 			}
 		}

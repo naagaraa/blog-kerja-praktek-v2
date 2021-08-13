@@ -58,6 +58,18 @@ class RegisterController extends Controller
 		$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 		$extensions_arr = ["jpg", "jpeg", "png"];
 
+		// jika level pembuat adalah super admin langsung approve
+		if($_SESSION["level"] == 0){
+			$status = 1;
+		}elseif($_SESSION["level"] == 1){
+		// jika level pembuat adalah admin membutuhkan approve super admin
+			$status = 0;
+		}else{
+		// jika level adalah user tidak diijikan
+			echo "maaf anda tidak diijikan ";
+			exit;
+		}
+
 		//  get value identitas
 		$data = [
 			'userid' => uniqid(),
@@ -65,7 +77,7 @@ class RegisterController extends Controller
 			'username' => htmlspecialchars($_POST['username']),
 			'password' => md5(htmlspecialchars($_POST['password'])),
 			'level' => htmlspecialchars($_POST['level']),
-			'status' => 1,
+			'status' => $status,
 			'deskripsi' =>  $_POST['deskripsi'],
 			'image' =>  $gambar['namaFile']
 		];

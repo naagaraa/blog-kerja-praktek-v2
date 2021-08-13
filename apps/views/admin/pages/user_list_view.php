@@ -27,11 +27,17 @@
 										<tr>
 											<th scope="col">No</th>
 											<th scope="col">Nama</th>
-											<th scope="col">Status</th>
+											<th scope="col">Role</th>
 											<th scope="col">Username</th>
 											<th scope="col">Deskripsi</th>
+
+											<?php if ($_SESSION['level'] === '0') : ?>
 											<th scope="col">Action</th>
-											<th scope="col">Request</th>
+											<th scope="col">status</th>
+											<?php elseif ($_SESSION['level'] === '1') : ?>
+											<th scope="col"></th>
+											<th scope="col">status</th>
+											<?php endif; ?>
 										</tr>
 									</thead>
 									<tbody>
@@ -68,7 +74,7 @@
 												</div>
 
 												<?php endif; ?>
-												<?php elseif ($_SESSION['level'] === '1') : ?>
+												<?php elseif ($_SESSION['level'] === '0') : ?>
 												<div class="btn-group" role="group">
 													<a href="">
 														<button disabled type="button" class="btn btn-warning">No
@@ -97,11 +103,23 @@
 												</div>
 												<?php endif; ?>
 												<?php endif; ?>
-												<?php elseif ($_SESSION['level'] === '1') : ?>
+												<?php elseif ($_SESSION['level'] === '0') : ?>
 												<div class="btn-group" role="group">
 													<a href="">
 														<button disabled class="btn btn-warning">No
 															Action</button>
+													</a>
+												</div>
+												<?php elseif ($row["status"] === '0') : ?>
+												<div class="btn-group" role="group">
+													<a href="#">
+														<button class="btn btn-danger">pending</button>
+													</a>
+												</div>
+												<?php elseif ($row["status"] === '1') : ?>
+													<div class="btn-group" role="group">
+													<a href="#">
+														<button class="btn btn-primary">aktif</button>
 													</a>
 												</div>
 												<?php endif; ?>

@@ -106,6 +106,8 @@ class Web extends Routes
 		$router->get('/logout', function () {
 			$this->Routing('cms/LoginController', 'logout');
 		});
+
+		// register user atau membuat user
 		$router->get('/register', function () {
 			$this->Routing('cms/RegisterController', 'index');
 		});

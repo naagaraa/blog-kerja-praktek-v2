@@ -12,7 +12,7 @@
 							</div>
 							<p class="lead">Login to your account</p>
 						</div>
-						<form id="login" class="form-auth-small">
+						<form action id="login" class="form-auth-small">
 							<div class="form-group">
 								<label for="signin-username" class="control-label sr-only">Username</label>
 								<input type="text" class="form-control" id="username" name="username" placeholder="Username">
@@ -65,10 +65,11 @@
 		</div>
 	</div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="<?= BASEURL . 'public'; ?>/js/cms/server.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="<?= BASEURL . 'public'; ?>/js/cms/notification.js"></script>
+<script src="<?= BASEURL . 'public'; ?>/js/cms/server.js"></script>
 <script src="<?= BASEURL . 'public'; ?>/js/cms/auth.js"></script>
+
 
 </body>
 

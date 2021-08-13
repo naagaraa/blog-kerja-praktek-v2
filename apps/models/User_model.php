@@ -81,10 +81,11 @@ class User_model
 	public function register($data)
 	{
 		// (`id`, `userid`, `nama`, `deskripsi`, `foto`, `user_name`, `passw`, `level`, `status`);
-		$query = "INSERT INTO $this->table VALUES ('', '', :nama, :deskripsi, :foto, :user_name, :passw, :level, :status)";
+		$query = "INSERT INTO $this->table VALUES ('', :userid, :nama, :deskripsi, :foto, :user_name, :passw, :level, :status)";
 		$this->db->query($query);
 
 		// binding untuk data text
+		$this->db->bind('userid', $data['userid']);
 		$this->db->bind('nama', $data['nama']);
 		$this->db->bind('deskripsi', $data['deskripsi']);
 		$this->db->bind('user_name', $data['username']);
