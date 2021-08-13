@@ -27,6 +27,7 @@ function data_sukses(message)
 {
 swal({
     title: message,
+    text: message,
     button : false,
     icon: "success",
     timer: 2500,

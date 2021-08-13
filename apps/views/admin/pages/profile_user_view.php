@@ -69,7 +69,7 @@
 						<form id="password-update">
 							<div class="form-group mb-5">
 								<label for="username"><span style="color: red;">*</span>Reset Password</label>
-								<input type="password" class="form-control md-none" id="password" placeholder="update your old password"  pattern=".{0}|.{8,}" title="Either 0 OR (8 chars minimum)">
+								<input type="password" class="form-control md-none" id="password-reset" placeholder="update your old password"  pattern=".{0}|.{8,}" title="Either 0 OR (8 chars minimum)">
 							</div>
 							<button type="submit" class="btn btn-primary">save</button>
 						</form>

@@ -33,16 +33,15 @@
 # apps/config/config.php
 
 $configuration = [
-	"APP_NAME" => $_ENV["APP_NAME"],
-	"APP_HOST" => $_ENV["APP_HOST"],
-	"APP_URL" => $_ENV["APP_URL"],
-	"DB_HOST" => $_ENV["DB_HOST"],
-	"DB_PORT" => $_ENV["DB_PORT"],
-	"DB_NAME" => $_ENV["DB_NAME"],
-	"DB_USERNAME" => $_ENV["DB_USERNAME"],
-	"DB_PASSWORD" => $_ENV["DB_PASSWORD"],
+    "APP_NAME" => $_ENV["APP_NAME"],
+    "APP_HOST" => $_ENV["APP_HOST"],
+    "APP_URL" => $_ENV["APP_URL"],
+    "DB_HOST" => $_ENV["DB_HOST"],
+    "DB_PORT" => $_ENV["DB_PORT"],
+    "DB_NAME" => $_ENV["DB_NAME"],
+    "DB_USERNAME" => $_ENV["DB_USERNAME"],
+    "DB_PASSWORD" => $_ENV["DB_PASSWORD"],
 ];
-
 
 //-------------------------------------Development----------------------------------------------//
 
@@ -62,11 +61,9 @@ define('BASEURL', $configuration['APP_HOST'] . $configuration['APP_NAME'] . '/')
 // // base-url untuh path
 // define('BASEURL', $configuration['APP_URL'] . '/');
 
-
 // vendor-URL
 $vendor = $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP_NAME'] . '/vendor/autoload.php';
 define('vendor', $vendor);
-
 
 // Constant untuk folder pada Controller
 define('controller_user', 'user');
@@ -78,7 +75,6 @@ $DIR_ROOT = $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP_NAME'];
 define('DIR_VENDOR', $DIR_VENDOR);
 define('DIR_ROOT', $DIR_ROOT);
 
-
 // config folder upload
 define("PathCover", $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP_NAME'] . '/upload/contents/cover/');
 define("PathImage", $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP_NAME'] . '/upload/contents/image/');
@@ -86,14 +82,12 @@ define("PathImageAccount", $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP
 
 define("PathImageTheme", $_SERVER['DOCUMENT_ROOT'] . '/' . $configuration['APP_NAME'] . '/upload/theme/');
 
-
 #Note
 # super admin username root
-# super admin password 12345
+# super admin password programmer1234
 // =============================
 # admin username programmer
-# admin password ekajayanagara1234
+# admin password nagara123
 // ==============================
 # marketing username andi
 # marketing  password andi1234
-

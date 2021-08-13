@@ -137,7 +137,6 @@ class ProfileController extends Controller
         }
     }
 
-
     public function update_password()
     {
         if (!isset($_SESSION['login'])) {
@@ -151,5 +150,39 @@ class ProfileController extends Controller
 
         $password = $_POST['password'];
         $datapasswd = $this->model('User_model')->verifpasswd($password);
+
+        // verification password reset not null
+        if ($password !== "") {
+            $data = [
+                'id' => $userdata['id'],
+                'userid' => $userdata['id'],
+                'nama' => $userdata['nama'],
+                'deskripsi' => $userdata['deskripsi'],
+                'foto' => $userdata['foto'],
+                'user_name' => $userdata['user_name'],
+                'passw' => md5(htmlspecialchars($password)),
+                'level' => $userdata['level'],
+                'status' => $userdata['status'],
+            ];
+
+            // update data
+            if ($this->model('User_model')->updateUserId($data) > 0) {
+                // jika sukses
+                $message = [
+                    "success" => true,
+                    "message" => 'data berhasil di update',
+                ];
+
+                echo json_encode($message);
+            }
+        } else {
+            $message = [
+                "success" => false,
+                "message" => 'password not valid, tidak boleh kosong',
+            ];
+
+            echo json_encode($message);
+        }
+
     }
 }

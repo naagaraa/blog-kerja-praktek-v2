@@ -30,6 +30,7 @@ function update_profile() {
         datas.append('foto', file);
     });
 
+    // ajax method 
     $.ajax({
         type: "POST",
         url: api_profile_update,
@@ -39,9 +40,9 @@ function update_profile() {
         contentType: false,
         success: function (response) {
             if (response.success == true) {
-                berhasil_login(response.message)
+                data_sukses(response.message)
             } else if (response.success == false){
-                gagal_login(response.message);
+                data_gagal(response.message);
             }
             console.log(response.message);
         },
@@ -54,5 +55,34 @@ function update_profile() {
 function reset_password()
 {
     // reset password here
-    swal("password-update");
+    let id = $('#id').val();
+    let password = $('#password-reset').val();
+    
+
+    console.log(password);
+
+    datas = new FormData();
+    datas.append('id', id);
+    datas.append('password', password);
+
+    // ajax method
+    $.ajax({
+        type: "POST",
+        url: api_password_update,
+        data: datas,
+        dataType: "JSON",
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            if (response.success == true) {
+                data_sukses(response.message)
+            } else if (response.success == false){
+                data_gagal(response.message);
+            }
+            console.log(response.message);
+        },
+        error: function (e) {
+            console.log(e.message);
+        }
+    });
 }

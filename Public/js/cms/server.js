@@ -7,4 +7,5 @@ let api_image_post = `${server}/theme/image/insert`;
 let api_text_post = `${server}/theme/text/insert`;
 
 let api_profile_update = `${server}/user/update`;
+let api_password_update = `${server}/user/update/password`;
 
