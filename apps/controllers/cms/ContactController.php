@@ -24,6 +24,7 @@ class ContactController extends Controller
 			'contact' => $this->model('contact_model')->getAllContact()
 		];
 
+
 		$this->view("admin/index_view", $data);
 		$this->view("admin/shared/header_view");
 		$this->view("admin/pages/contact_view", $data);

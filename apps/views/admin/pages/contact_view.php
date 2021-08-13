@@ -28,7 +28,7 @@
 											<th scope="col">No</th>
 											<th scope="col">Nama</th>
 											<th scope="col">Email</th>
-											<th scope="col">Pesan</th>
+											<th scope="col">perihal</th>
 											<th scope="col">Tanggal</th>
 											<th scope="col">Action</th>
 										</tr>
@@ -38,10 +38,10 @@
 										foreach ($data['contact'] as $contact) : ?>
 										<tr>
 											<th scope="row"><?= $i++; ?></th>
-											<td><?= $contact['nama']; ?></td>
-											<td><?= $contact['email']; ?></td>
-											<td><?= $contact['pesan']; ?></td>
-											<td><?= $contact['tanggal']; ?></td>
+											<td><?= substr($contact['nama'],0,9); ?></td>
+											<td><?= substr($contact['email'],0,100); ?></td>
+											<td><?= substr($contact['perihal'],0,100); ?></td>
+											<td><?= substr($contact['tanggal'],0,100); ?></td>
 											<td>
 												<a target="_blank" href="<?= BASEURL ?>contact/preview/<?= $contact['perihal']; ?>">
 													<button type="button" class="btn btn-info">Cetak</button>

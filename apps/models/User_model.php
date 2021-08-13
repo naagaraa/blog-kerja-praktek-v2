@@ -47,6 +47,7 @@ class User_model
 	}
 	public function updateUserId($data)
 	{
+		var_dump($data);die;
 		// UPDATE `tb_user` SET `id`,`userid`,`nama`,`deskripsi`=,`foto`=,`user_name`=,`passw`=,`level`=,`status`= WHERE 1
 		$query = "UPDATE tb_user SET id=:id, userid=:userid, nama=:nama, deskripsi=:deskripsi, foto=:foto, user_name=:username, passw=:passw, level=:level, status=:status WHERE id=:id";
 		$this->db->query($query);

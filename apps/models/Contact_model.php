@@ -38,7 +38,6 @@ class Contact_model
 
 	public function insertContact($data)
 	{
-
 		// (`id`, `nama`, `email`,'mobile', `subject`, 'perihal , `pesan`, `tanggal`)
 		$query = "INSERT INTO $this->table VALUES ('', :nama, :email, :mobile, :company, :perihal, :pesan, :tanggal)";
 		$this->db->query($query);

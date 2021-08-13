@@ -37,8 +37,6 @@ class ProfileController extends Controller
 			exit;
         }
         
-        var_dump($_FILES['foto']);
-        die;
 
 		// config
         $id = $_POST['id'];
@@ -47,35 +45,12 @@ class ProfileController extends Controller
         $password = $_POST['password'];
         $datapasswd = $this->model('User_model')->verifpasswd($password);
 
-        // handling
+        // handling password yg  tidak di update
         if ( $_POST['password'] === $datapasswd['passw']) {
-            # code...
             echo "pakai password lama";
-            if (!empty($_FILES['foto']['name'])) {
-                //  get value identitas
-                $data = [
-                    'id' => $userdata['id'],
-                    'userid' => $userdata['id'],
-                    'nama' => $_POST['nama'],
-                    'deskripsi' => $_POST['deskripsi'],
-                    'foto' => $userdata['foto'],
-                    'user_name' => $_POST['username'],
-                    'passw' => $userdata['passw'],
-                    'level' => $userdata['level'],
-                    'status' => $userdata['status'],
-                ];
-    
-           
-                // insert data
-                if ($this->model('User_model')->updateUserId($data) > 0) {
-                    // jika sukses
-                    $message = [
-                        "success" => true,
-                        "message" => 'data berhasil di update'
-                    ];
-                } 
-                exit;                
-            }else{
+            # code...
+            if (isset($_FILES['foto']["name"])) {
+                echo "update foto";
                 // get value gambar
                 $gambar = [
                     'namaFile' => $this->lib('randName')->getRandomName($_FILES['foto']['name']),
@@ -109,9 +84,6 @@ class ProfileController extends Controller
                     'status' => $userdata['status'],
                 ];
     
-                // var_dump($data);
-                // die;
-    
                 // Check extension image/file
                 if (in_array($imageFileType, $extensions_arr)) {
                     // Convert to base64 
@@ -127,11 +99,38 @@ class ProfileController extends Controller
                     }
                     // move file
                     move_uploaded_file($gambar['tmpName'], $target_dir . $gambar['namaFile']);
+                    $_SESSION['foto'] = $gambar['namaFile'];
+                    header('refresh: 3; url =' . BASEURL . 'dashboard');
                     exit;
-                }
+                }             
+            }else{
+                echo " pakai password lama tidak update foto";
+                //  get value identitas
+                $data = [
+                    'id' => $userdata['id'],
+                    'userid' => $userdata['id'],
+                    'nama' => $_POST['nama'],
+                    'deskripsi' => $_POST['deskripsi'],
+                    'foto' => $userdata['foto'],
+                    'user_name' => $_POST['username'],
+                    'passw' => $userdata['passw'],
+                    'level' => $userdata['level'],
+                    'status' => $userdata['status'],
+                ];
+    
+                var_dump($data);
+                // insert data
+                if ($this->model('User_model')->updateUserId($data) > 0) {
+                    // jika sukses
+                    $message = [
+                        "success" => true,
+                        "message" => 'data berhasil di update'
+                    ];
+                } 
+                exit;
             }
         } else {
-            echo "pakai password baru";
+            echo "pakai password baru dan tidak update foto";
             if ($_FILES['foto']['name'] === "" ) {
                 //  get value identitas
                 $data = [
@@ -146,9 +145,6 @@ class ProfileController extends Controller
                     'status' => $userdata['status'],
                 ];
     
-                // var_dump($data);
-                // die;
-    
                 // insert data
                 if ($this->model('User_model')->updateUserId($data) > 0) {
                     // jika sukses
@@ -159,6 +155,7 @@ class ProfileController extends Controller
                 }
                 exit;
             }else{
+                echo "pakai password baru dan update foto";
                 // get value gambar
                 $gambar = [
                     'namaFile' => $this->lib('randName')->getRandomName($_FILES['foto']['name']),
@@ -210,8 +207,9 @@ class ProfileController extends Controller
                     }
                     // move file
                     move_uploaded_file($gambar['tmpName'], $target_dir . $gambar['namaFile']);
-                    exit;
+                    $_SESSION['foto'] = $gambar['namaFile'];
                 }
+                exit;
             }
         }
 	}

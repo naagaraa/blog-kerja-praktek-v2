@@ -35,7 +35,7 @@
 					<div class="overlay"></div>
 					<div class="content text">
 						<h1 class="heading">Digital Training</h1>
-						<p>by The Develovers | PT SPS</p>
+						<p>by The Develovers | PT SPS | OrangT Divisi</p>
 					</div>
 				</div>
 				<div class="clearfix"></div>
