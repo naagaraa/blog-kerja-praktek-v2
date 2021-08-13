@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2021 at 04:27 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: Aug 13, 2021 at 05:09 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -141,17 +141,19 @@ CREATE TABLE `tb_user` (
   `foto` varchar(255) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `passw` varchar(255) NOT NULL,
-  `level` int(1) NOT NULL COMMENT 'status 0 : root, status 1 : admin ,status 2 : user'
+  `level` int(1) NOT NULL COMMENT 'status 0 : root, status 1 : admin ,status 2 : user',
+  `status` int(11) NOT NULL COMMENT 'status acc atau tidak acc'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `userid`, `nama`, `deskripsi`, `foto`, `user_name`, `passw`, `level`) VALUES
-(1, 'root12345', 'Eka Jaya Nagara', '</p>admin kece</p>', '309b6112bff7442a3ff272f1c92d1eb8.jpg', 'root', '827ccb0eea8a706c4c34a16891f84e7b', 0),
-(12, '', 'salma anisa', '<p>ini anisa</p>\r\n', '309b6112bff7442a3ff272f1c92d1eb8.jpg', 'anisa', 'a384b6463fc216a5f8ecb6670f86456a', 2),
-(15, '', 'kepolo', '<p>admin</p>\r\n', '299374556086dad8662147a8e0ce5256.jpg', 'kepo', '25d55ad283aa400af464c76d713c07ad', 1);
+INSERT INTO `tb_user` (`id`, `userid`, `nama`, `deskripsi`, `foto`, `user_name`, `passw`, `level`, `status`) VALUES
+(1, 'root12345', 'Eka Jaya Nagara', '</p>admin kece</p>', '309b6112bff7442a3ff272f1c92d1eb8.jpg', 'root', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1),
+(19, '6115df94901a0', 'nagara', '<p>admin dari pt sps dan programmer</p>\r\n', '414e54446aa284d88ab0b1ef37cac8b4.jpg', 'programmer', '4f242e29dba69d52e9045fcd1f92ad3d', 1, 1),
+(20, '6115dfb883549', 'andi diputra', '<p>digital marketing pt sps</p>\r\n', 'a76e38987135eb9853430a26aa465123.jpg', 'andi', '1d69ded7713f92f0f41ddfc0cdbcdb80', 2, 1),
+(21, '6115e068dd139', 'nita', '<p>user add testing</p>\r\n', '5d96b3aa0c8e4b7adfaf35bc0f3703a7.jpg', 'nita12', '89e2758116d9ea57700ce3ef2e1cdedc', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,7 @@ CREATE TABLE `tb_visitor` (
 --
 
 INSERT INTO `tb_visitor` (`id`, `uniqid`, `urlid`, `judul_content`, `visit_views`, `visitor_ip`, `waktu`) VALUES
-(22, '5ef4c25666ad0', '7-layanan-video-conference-gratis-untuk-work-from-home', '7 Layanan Video Conference Gratis untuk Work from Home', 14, '::1', '2020-06-25 22:27:18'),
+(22, '5ef4c25666ad0', '7-layanan-video-conference-gratis-untuk-work-from-home', '7 Layanan Video Conference Gratis untuk Work from Home', 15, '::1', '2020-06-25 22:27:18'),
 (23, '5ef4c65a45069', 'world-wide-web-consortium', 'World Wide Web Consortium', 4, '::1', '2020-06-25 22:44:26'),
 (24, '5ef4c72616e72', 'pengertian-dan-karakteristik-e-learning', 'Pengertian dan karakteristik e-learning', 6, '::1', '2020-06-25 22:47:50'),
 (25, '5ef4c91a3a6b4', 'manfaat-dan-pentingnya-belajar-bahasa-inggris-di-era-globalisasi', 'Manfaat dan Pentingnya Belajar Bahasa Inggris di Era Globalisasi', 4, '::1', '2020-06-25 22:56:10'),
@@ -269,7 +271,7 @@ ALTER TABLE `tb_tmp`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_visitor`
