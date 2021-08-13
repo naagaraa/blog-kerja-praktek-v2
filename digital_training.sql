@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2021 at 05:09 AM
+-- Generation Time: Aug 13, 2021 at 04:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -63,7 +63,9 @@ CREATE TABLE `tb_contact` (
   `id` int(9) UNSIGNED NOT NULL,
   `nama` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `subject` varchar(255) NOT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `perihal` varchar(30) NOT NULL,
   `pesan` varchar(255) NOT NULL,
   `tanggal` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -72,12 +74,24 @@ CREATE TABLE `tb_contact` (
 -- Dumping data for table `tb_contact`
 --
 
-INSERT INTO `tb_contact` (`id`, `nama`, `email`, `subject`, `pesan`, `tanggal`) VALUES
-(54, 'Eka Jaya Nagara', 'nagara.artwork@gmail.com', 'kerja sama', 'Minjem HP dong', '2020-06-07 15:00:25'),
-(55, 'Budi', 'budi@umbrella.com', 'request apps', 'hi, bisa kan saya request aplikasi sebagai demo', '2020-06-12 22:44:31'),
-(56, 'nita', 'nita@sps.com', 'kerja sama', 'apa kabar', '2020-06-24 17:40:26'),
-(57, 'didi', 'ekabersinar@gmail.com', 'kerja sama', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quam nulla est corrupti! Ab accusamus eveniet praesentium dolorum veniam quis debitis fugiat voluptate, distinctio sed commodi velit voluptas obcaecati temporibus.', '2020-06-26 15:06:46'),
-(58, 'budi', 'budi@email.com', 'request apps', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quam nulla est corrupti! Ab accusamus eveniet praesentium dolorum veniam quis debitis fugiat voluptate, distinctio sed commodi velit voluptas obcaecati temporibus. apa jaja', '2020-06-26 15:12:28');
+INSERT INTO `tb_contact` (`id`, `nama`, `email`, `mobile`, `company`, `perihal`, `pesan`, `tanggal`) VALUES
+(59, 'nagara', 'nagara@gmail.com', '087889053382', 'sps', 'Parnership', 'please let me go', '2021-08-13 10:23:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_image`
+--
+
+CREATE TABLE `tb_image` (
+  `id` int(11) NOT NULL,
+  `uniqid` varchar(200) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `createat` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updateat` timestamp NULL DEFAULT NULL,
+  `updateby` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -118,6 +132,38 @@ CREATE TABLE `tb_password_reset` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_sosmed`
+--
+
+CREATE TABLE `tb_sosmed` (
+  `id` int(11) NOT NULL,
+  `uniqid` varchar(200) NOT NULL,
+  `sosmed` varchar(50) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `createat` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updateat` timestamp NULL DEFAULT NULL,
+  `updateby` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_text`
+--
+
+CREATE TABLE `tb_text` (
+  `id` int(11) NOT NULL,
+  `uniqid` varchar(200) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `content` varchar(200) NOT NULL,
+  `createat` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updateat` timestamp NULL DEFAULT NULL,
+  `updateby` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_tmp`
 --
 
@@ -150,7 +196,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `userid`, `nama`, `deskripsi`, `foto`, `user_name`, `passw`, `level`, `status`) VALUES
-(1, 'root12345', 'Eka Jaya Nagara', '</p>admin kece</p>', '309b6112bff7442a3ff272f1c92d1eb8.jpg', 'root', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1),
+(1, '1', 'eka jaya nagara', '<p>programer PHP expert</p>\n\n<p>&nbsp;</p>\n', '24cc910d43b00e4b52d35be4ce225447.jpg', 'root', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1),
 (19, '6115df94901a0', 'nagara', '<p>admin dari pt sps dan programmer</p>\r\n', '414e54446aa284d88ab0b1ef37cac8b4.jpg', 'programmer', '4f242e29dba69d52e9045fcd1f92ad3d', 1, 1),
 (20, '6115dfb883549', 'andi diputra', '<p>digital marketing pt sps</p>\r\n', 'a76e38987135eb9853430a26aa465123.jpg', 'andi', '1d69ded7713f92f0f41ddfc0cdbcdb80', 2, 1),
 (21, '6115e068dd139', 'nita', '<p>user add testing</p>\r\n', '5d96b3aa0c8e4b7adfaf35bc0f3703a7.jpg', 'nita12', '89e2758116d9ea57700ce3ef2e1cdedc', 2, 0);
@@ -215,6 +261,12 @@ ALTER TABLE `tb_password_reset`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_text`
+--
+ALTER TABLE `tb_text`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_tmp`
 --
 ALTER TABLE `tb_tmp`
@@ -247,7 +299,7 @@ ALTER TABLE `tb_artikel`
 -- AUTO_INCREMENT for table `tb_contact`
 --
 ALTER TABLE `tb_contact`
-  MODIFY `id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tb_info`
@@ -259,6 +311,12 @@ ALTER TABLE `tb_info`
 -- AUTO_INCREMENT for table `tb_password_reset`
 --
 ALTER TABLE `tb_password_reset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_text`
+--
+ALTER TABLE `tb_text`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
