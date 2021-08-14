@@ -7,7 +7,7 @@
 					<div class="content">
 						<div class="header">
 							<div class="logo text-center">
-								<!-- <img src="<?= BASE_URL . '/admin'; ?>/img/logo-dark.png"
+								<!-- <img src="<?=BASE_URL . '/admin';?>/img/logo-dark.png"
 									alt="Klorofil Logo"> -->
 							</div>
 							<p class="lead">Login to your account</p>
@@ -24,10 +24,10 @@
 
 							<button class="btn btn-primary btn-lg btn-block">LOGIN</button>
 							<br>
-							<div class="bottom" style="cursor: pointer;" data-toggle="modal" data-target="#ModalForgotPasswd">
+							<!-- <div class="bottom" style="cursor: pointer;" data-toggle="modal" data-target="#ModalForgotPasswd">
 								<span class="helper-text"><i class="fa fa-lock"></i>
 									Forgot password?</span>
-							</div>
+							</div> -->
 						</form>
 					</div>
 				</div>
@@ -66,9 +66,9 @@
 	</div>
 
 <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
-<script src="<?= BASEURL . 'public'; ?>/js/cms/notification.js"></script>
-<script src="<?= BASEURL . 'public'; ?>/js/cms/server.js"></script>
-<script src="<?= BASEURL . 'public'; ?>/js/cms/auth.js"></script>
+<script src="<?=BASEURL . 'public';?>/js/cms/notification.js"></script>
+<script src="<?=BASEURL . 'public';?>/js/cms/server.js"></script>
+<script src="<?=BASEURL . 'public';?>/js/cms/auth.js"></script>
 
 
 </body>
