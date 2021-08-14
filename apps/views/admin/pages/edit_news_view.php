@@ -2,7 +2,7 @@
 <div id="wrapper">
 	<!-- LEFT SIDE BAR -->
 	<?php $this->view("admin/shared/sidebar_view");
-	?>
+?>
 	<!-- END LEFT SIDE BAR -->
 	<!-- MAIN -->
 	<div class="main">
@@ -21,41 +21,34 @@
 								</div>
 							</div>
 							<div class="panel-body">
-								<form action="<?= BASEURL  ?>artikel/update/" method="POST" enctype="multipart/form-data">
-									<input type="hidden" class="form-control" id="judul" name="id" value="<?= $data['News']['id']; ?>">
+								<form action="<?=BASEURL?>artikel/update/" method="POST" enctype="multipart/form-data">
+									<input type="hidden" class="form-control" name="id" value="<?=$data['News']['id'];?>">
 									<input type="hidden" class="form-control" id="judul" name="uniqid"
-										value="<?= $data['News']['uniqid']; ?>">
+										value="<?=$data['News']['uniqid'];?>">
 									<div class="form-group mb-5">
 										<div class="col-md">
 											<label for="judul">Judul</label>
 
 											<input type="text" class="form-control" id="judul" name="judul"
-												value="<?= $data['News']['judul']; ?>">
+												value="<?=$data['News']['judul'];?>">
 										</div>
 									</div>
 									<div class="form-group  mb-5">
 										<label for="penulis">Penulis</label>
 										<input type="text" class="form-control" id="penulis" name="penulis"
-											value="<?= $data['News']['penulis']; ?>">
+											value="<?=$data['News']['penulis'];?>">
 									</div>
-									<!-- <span>
-										<label for="">Status : </label>
-									</span> -->
 									<div class="form-group  mb-5">
-										<!-- <div class="form-check">
-											<input class="form-check-input" type="radio" name="status" id="publish"
-												value="1" checked>
-											<label class="form-check-label" for="publish">
-												Publish
-											</label>
+										<div class="row">
+											<div class="col-md-6">
+												<img src="<?=BASEURL . "upload/contents/cover/" . $data['News']['cover']?>" class="img-thumbnail" alt="Responsive image">
+												<span> cover artikel <?=$data['News']['cover']?></span>
+											</div>
+											<div class="col-md-6">
+												<img src="<?=BASEURL . "upload/contents/image/" . $data['News']['image']?>" class="img-thumbnail" alt="Responsive image">
+												<span> image artikel <?=$data['News']['image']?></span>
+											</div>
 										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="status" id="unpublish"
-												value="0">
-											<label class="form-check-label" for="unpublish">
-												Unpublish
-											</label>
-										</div> -->
 									</div>
 									<div class="form-group  mb-5">
 										<div class="row">
@@ -80,8 +73,8 @@
 									</div>
 									<div class="form-group mb-5">
 										<label for="">Content</label>
-										<textarea class="form-control" id="content" name="content"
-											rows="3"><? $data['News']['artikel']; ?></textarea>
+										<textarea class="form-control" name="content"
+											rows="3"><?=$data['News']['artikel'];?></textarea>
 									</div>
 									<button type="submit" class="btn btn-primary">Save</button>
 								</form>
