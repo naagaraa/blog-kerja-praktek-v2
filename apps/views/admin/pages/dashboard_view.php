@@ -1,10 +1,10 @@
 <!-- WRAPPER -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
-<script src="<?= BASEURL . 'public/cms'; ?>/vendor/chartjs/chart.js"></script>
+<script src="<?=BASEURL . 'public/cms';?>/vendor/chartjs/chart.js"></script>
 <div id="wrapper">
 	<!-- LEFT SIDE BAR -->
 	<?php $this->view("admin/shared/sidebar_view");
-	?>
+?>
 	<!-- END LEFT SIDE BAR -->
 	<!-- MAIN -->
 	<div class="main">
@@ -15,8 +15,8 @@
 				<div class="panel panel-headline">
 					<div class="panel-heading">
 						<h3 class="panel-title">Weekly Overview</h3>
-						<?php date_default_timezone_set('Asia/Jakarta'); ?>
-						<p class="panel-subtitle">Day : <?= date('Y-m-d H:i:s', time()); ?></p>
+						<?php date_default_timezone_set('Asia/Jakarta');?>
+						<p class="panel-subtitle">Day : <?=date('Y-m-d H:i:s', time());?></p>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -25,7 +25,7 @@
 								<div class="metric">
 									<span class="icon"><i class="fa fa-eye"></i></span>
 									<p>
-										<span class="number"><?= $data['views']; ?></span>
+										<span class="number"><?=$data['views'];?></span>
 										<span class="title">Visits Artikel</span>
 									</p>
 								</div>
@@ -36,12 +36,23 @@
 								<div class="metric">
 									<span class="icon"><i class="fa fa-file"></i></span>
 									<p>
-										<span class="number"><?= $data['totalResource']; ?></span>
+										<span class="number"><?=$data['totalResource'];?></span>
 										<span class="title">Resource Artikel</span>
 									</p>
 								</div>
 							</div>
 							<!-- end total Resource -->
+							<!-- Total User -->
+							<div class="col-md-3">
+								<div class="metric">
+									<span class="icon"><i class="fa fa-user"></i></span>
+									<p>
+										<span class="number"><?=$data['totalUser'];?></span>
+										<span class="title">User </span>
+									</p>
+								</div>
+							</div>
+							<!-- end total User -->
 						</div>
 					</div>
 				</div>
@@ -50,7 +61,7 @@
 				<!-- TASKS Artikel line -->
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Statistik Artikel Line</h3>
+						<h3 class="panel-title">Popular 20 Artikel</h3>
 						<div class="right">
 							<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 							<!-- <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button> -->
@@ -65,7 +76,7 @@
 				<!-- TASKS Artikel bar -->
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Statistik Artikel Bar<h3>
+						<h3 class="panel-title">Popular 20 Artikel <h3>
 								<div class="right">
 									<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 									<!-- <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button> -->
@@ -86,15 +97,15 @@
 
 		<script>
 		// passing data php array ke json javascript
-		var data = <?= json_encode($data['artikel']) ?>;
+		var data = <?=json_encode($data['artikel'])?>;
 
-		// array labels kosong  
+		// array labels kosong
 		var labels = []
 		data.forEach(label => {
 			labels.push(label['judul_content'].substr(0, 10) + '...');
 		});
 
-		// array values	 kosong  
+		// array values	 kosong
 		var values = [];
 		data.forEach(value => {
 			values.push(value['visit_views']);
@@ -104,7 +115,7 @@
 		console.log(labels);
 		console.log(values);
 
-		// line bar 
+		// line bar
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var myLineChart = new Chart(ctx, {
 			// The type of chart we want to create
@@ -125,7 +136,7 @@
 		});
 		// end line bar
 
-		// line bar 
+		// line bar
 		var ctx2 = document.getElementById('myChartBar').getContext('2d');
 		var myBarChart = new Chart(ctx2, {
 			// The type of chart we want to create

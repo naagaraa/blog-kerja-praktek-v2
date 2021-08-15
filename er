@@ -1,0 +1,71 @@
+[33mcommit 3a26310f3dd8a0b0df8d3e587c9846841e1b41bd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Sat Aug 14 14:03:15 2021 +0700
+
+    update database
+
+[33mcommit 612e778dd559f3b8841d1e478796e164cbfbbe31[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Sat Aug 14 14:00:31 2021 +0700
+
+    remove forgot password
+
+[33mcommit 224d692f3907381aeea6ebad9d59886b2806b7cc[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Sat Aug 14 13:57:30 2021 +0700
+
+    update fixed setting fiture insert sosmed and text
+
+[33mcommit f03470c6d278a916a2bddf5dc7417aecb0b1f35e[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Sat Aug 14 11:10:20 2021 +0700
+
+    fixed update artikel
+
+[33mcommit 98db4a34988394840b3de6bc72af592dea275895[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 21:27:15 2021 +0700
+
+    update password reset
+
+[33mcommit 3844e99b27173c6d57e576a5e32410b0b637465a[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 21:08:25 2021 +0700
+
+    update database
+
+[33mcommit f9874b106a0518db12f3c70f70e943d0b356d50a[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 21:07:51 2021 +0700
+
+    fixed profile update
+
+[33mcommit ffa0eaa52919e3ba94277af2f025dc496b5a204e[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 11:17:21 2021 +0700
+
+    under development update profile
+
+[33mcommit 1a32812e000a223bb9157ab66088ef01dcd0f2b1[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 10:09:43 2021 +0700
+
+    update database
+
+[33mcommit 11b00211438c98d2b46e51742ed31c40fd4eb565[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Fri Aug 13 10:08:33 2021 +0700
+
+    fixed login fail message and edit database
+
+[33mcommit 50d4b8556a002979c6ed9c235ede39a569b03f7e[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Thu Apr 29 10:20:45 2021 +0700
+
+    update versi 2
+
+[33mcommit 17368372b4dfea425cdc716f02db1c0671703e45[m
+Author: naagaraa <ekabersinar@gmail.com>
+Date:   Thu Apr 29 10:19:51 2021 +0700
+
+    first commit

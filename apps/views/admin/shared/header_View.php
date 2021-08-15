@@ -5,19 +5,19 @@
 			<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 		</div>
 		<div class="brand">
-			<a href="<?= BASEURL . 'dashboard'; ?>">
-			<img src="<?= ASSET . '/cms'; ?>/img/logo-dark.png"
-				alt="Klorofil Logo" class="img-responsive logo">	
+			<a href="<?=BASEURL . 'dashboard';?>">
+			<img src="<?=ASSET . '/cms';?>/img/logo-dark.png"
+				alt="Klorofil Logo" class="img-responsive logo">
 			</a>
 		</div>
 		<form class="navbar-form navbar-left">
-			<div class="input-group">
+			<!-- <div class="input-group">
 				<input type="text" value="" class="form-control" placeholder="Search dashboard...">
 				<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
-			</div>
+			</div> -->
 		</form>
 		<div class="navbar-btn navbar-btn-right">
-			<a  href="<?= BASEURL . 'dashboard'; ?>"><img src="<?= ASSET . '/cms'; ?>/img/logo-dark.png"
+			<a  href="<?=BASEURL . 'dashboard';?>"><img src="<?=ASSET . '/cms';?>/img/logo-dark.png"
 				alt="Klorofil Logo" class="img-responsive logo logo-mobile"></a>
 		</div>
 		<div id="navbar-menu">
@@ -53,13 +53,13 @@
 				</li> -->
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
-							src="<?= BASEURL; ?>upload/user/<?= $_SESSION['foto']; ?>" class="img-circle" alt="Avatar">
-						<span><?= $_SESSION['username']; ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							src="<?=BASEURL;?>upload/user/<?=$_SESSION['foto'];?>" class="img-circle" alt="Avatar">
+						<span><?=$_SESSION['username'];?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 					<ul class="dropdown-menu">
-						<li><a href="<?= BASEURL . 'user/profile' ?>"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+						<li><a href="<?=BASEURL . 'user/profile'?>"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 						<!-- <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li> -->
-						<li><a href="<?= BASEURL . 'theme' ?>"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-						<li><a href="<?= BASEURL . 'logout'; ?>"><i class="lnr lnr-exit"></i>
+						<li><a href="<?=BASEURL . 'theme'?>"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+						<li><a href="<?=BASEURL . 'logout';?>"><i class="lnr lnr-exit"></i>
 								<span>Logout</span></a>
 						</li>
 					</ul>
@@ -70,6 +70,6 @@
 			</ul>
 		</div>
 	</div>
-	
+
 </nav>
 <!-- END NAVBAR -->

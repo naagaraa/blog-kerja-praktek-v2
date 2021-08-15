@@ -18,7 +18,7 @@ class Visitor_model
 
     public function getAllInfoVisitor()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query("SELECT * FROM {$this->table} ORDER BY visit_views DESC LIMIT 20");
         return $this->db->resultSetArray();
     }
 

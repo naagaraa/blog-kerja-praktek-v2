@@ -201,6 +201,11 @@ class Web extends Routes
             $this->Routing('cms/ThemeController', 'insert_texttheme');
         });
 
+        // laporan
+        $router->get('/laporan', function () {
+            $this->Routing('cms/LaporanController', 'index');
+        });
+
         // test
         $router->get('/info', function () {
             phpinfo();

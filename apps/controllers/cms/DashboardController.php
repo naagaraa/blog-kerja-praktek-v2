@@ -5,58 +5,42 @@ use MiniMvc\Apps\Core\Bootstraping\Controller;
 
 class DashboardController extends Controller
 {
-	public function __construct()
-	{
-		// constructor here
-		session_start();
+    public function __construct()
+    {
+        // constructor here
+        session_start();
 
-	}
-	public function index()
-	{
-		// code index here
-		if (!isset($_SESSION['login'])) {
-			header('Location:' . BASEURL . 'login');
-			exit;
-		}
+    }
+    public function index()
+    {
+        // code index here
+        if (!isset($_SESSION['login'])) {
+            header('Location:' . BASEURL . 'login');
+            exit;
+        }
 
-		$visitor = $this->model('Visitor_model')->getAllRowVisitor();
-		$visit_views = $this->model('Visitor_model')->getAllInfoVisitor();
+        $visitor = $this->model('Visitor_model')->getAllRowVisitor();
+        $visit_views = $this->model('Visitor_model')->getAllInfoVisitor();
+        $user = $this->model('User_model')->getAllUser();
 
-		$n_views = 0;
-		for ($i = 0; $i <= $visitor - 1; $i++) {
-			$n_views += $visit_views[$i]['visit_views'];
-		}
+        // count visitor artikel
+        $n_views = 0;
+        foreach ($visit_views as $key => $value) {
+            $n_views = $n_views + $visit_views[$key]["visit_views"];
+        }
 
-		$data = [
-			'judul' =>  'Dashboard',
-			'views' =>  $n_views,
-			'totalResource' => $visitor,
-			'artikel' => $visit_views,
-		];
+        $data = [
+            'judul' => 'Dashboard',
+            'views' => $n_views,
+            'totalResource' => $visitor,
+            'totalUser' => count($user),
+            'artikel' => $visit_views,
+        ];
 
-		$this->view("admin/index_view", $data);
-		$this->view("admin/shared/header_view");
-		$this->view("admin/pages/dashboard_view", $data);
-		$this->view("admin/shared/footer_view");
-	}
+        $this->view("admin/index_view", $data);
+        $this->view("admin/shared/header_view");
+        $this->view("admin/pages/dashboard_view", $data);
+        $this->view("admin/shared/footer_view");
+    }
 
-	public function show($request)
-	{
-		// code here show here
-	}
-
-	public function create()
-	{
-		// code here create here
-	}
-
-	public function update($request)
-	{
-		// code here update here
-	}
-
-	public function remove($request)
-	{
-		// code here remove here
-	}
 }

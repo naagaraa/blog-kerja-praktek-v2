@@ -4,40 +4,38 @@
 		<nav>
 			<ul class="nav">
 				<li>
-					<a href="<?= BASEURL . 'dashboard'; ?>">
+					<a href="<?=BASEURL . 'dashboard';?>">
 						<!-- <i class="lnr lnr-home"></i> -->
 						<span>Dashboard</span>
 					</a>
 				</li>
 				<!-- <li>
-					<a href="<?= BASEURL . 'chard'; ?>" class="">
+					<a href="<?=BASEURL . 'chard';?>" class="">
 						<i class="lnr lnr-chart-bars"></i>
 						<span>Charts</span>
 					</a>
 				</li> -->
 				<li>
-					<a href="<?= BASEURL . 'artikel/list'; ?>" class="">
+					<a href="<?=BASEURL . 'artikel/list';?>" class="">
 						<!-- <i class="lnr lnr-code"></i> -->
 						<span>List Article</span>
 					</a>
 				</li>
-				<li><a href="<?= BASEURL . 'artikel/tambah'; ?>" class="">
+				<li><a href="<?=BASEURL . 'artikel/tambah';?>" class="">
 						<!-- <i class="lnr lnr-code"></i> -->
 						<span>Tambah Article</span>
 					</a>
 				</li>
 				<li>
-					<a href="<?= BASEURL . 'contact/list'; ?>" class="">
+					<a href="<?=BASEURL . 'contact/list';?>" class="">
 						<!-- <i class="lnr lnr-code"> -->
 						</i> <span>Contact Us</span>
 					</a>
 				</li>
 
 				<!-- akses super admin -->
-				<?php  if ($_SESSION['level'] === '0') : 
-				?>
-				<?php
-				echo "<li>
+				<?php if ($_SESSION['level'] === '0'): ?>
+				<?php echo "<li>
 							<a href=" . "'" . BASEURL . "register'" . "class=''>
 								</i> <span>Tambah User</span>
 							</a>
@@ -57,10 +55,8 @@
 								</i> <span>Visit Page</span>
 							</a>
 						</li>"; ?>
-				<?php elseif ($_SESSION['level'] === '1') : 
-				?>
-				<?php
-				echo "<li>
+				<?php elseif ($_SESSION['level'] === '1'): ?>
+				<?php echo "<li>
 							<a href=" . "'" . BASEURL . "register'" . "class=''>
 								</i> <span>Tambah User</span>
 							</a>
@@ -70,9 +66,15 @@
 								</i> <span>User List</span>
 							</a>
 						</li>"; ?>
-				<?php endif; 
-				?>
+				<?php endif;?>
+				<li>
+					<a href="<?=BASEURL . 'laporan';?>" class="">
+						<!-- <i class="lnr lnr-code"> -->
+						</i> <span>Laporan</span>
+					</a>
+				</li>
 				<!--  end akses super admin -->
+
 
 
 			</ul>
