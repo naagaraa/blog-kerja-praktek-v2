@@ -206,6 +206,16 @@ class Web extends Routes
             $this->Routing('cms/LaporanController', 'index');
         });
 
+        $router->post('/laporan/cetak-artikel', function () {
+            $this->Routing('cms/LaporanController', 'cetak_artikel');
+        });
+        $router->post('/laporan/cetak-contact', function () {
+            $this->Routing('cms/LaporanController', 'cetak_contact');
+        });
+        $router->post('/laporan/cetak', function () {
+            $this->Routing('cms/LaporanController', 'cetak');
+        });
+
         // test
         $router->get('/info', function () {
             phpinfo();

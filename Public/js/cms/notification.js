@@ -40,7 +40,7 @@ swal({
     button : false,
     text : message,
     icon: "warning",
-    timer: 2500,
+    // timer: 2500,
     });
 }
 

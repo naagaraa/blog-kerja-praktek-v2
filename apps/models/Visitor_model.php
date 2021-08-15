@@ -29,6 +29,15 @@ class Visitor_model
         return $this->db->rowCount();
     }
 
+    public function getDataArtikel($data)
+    {
+        $this->db->query("SELECT * FROM  {$this->table} WHERE waktu LIKE :waktu LIMIT {$data['limit']}");
+        $this->db->bind(":waktu", "%{$data['waktu']}%");
+        $this->db->execute();
+        $this->db->rowCount();
+        return $this->db->resultSetArray();
+    }
+
     public function getInfoVisitId($urlid)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE urlid=:urlid');

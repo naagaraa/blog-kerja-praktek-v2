@@ -5,45 +5,43 @@ use MiniMvc\Apps\Core\Bootstraping\Controller;
 
 class ContactController extends Controller
 {
-	public function __construct()
-	{
-		// constructor here
-		session_start();
+    public function __construct()
+    {
+        // constructor here
+        session_start();
 
-	}
-	public function index()
-	{
-		// code index here
-		if (!isset($_SESSION['login'])) {
-			header('Location:' . BASEURL . 'login');
-			exit;
-		}
+    }
+    public function index()
+    {
+        // code index here
+        if (!isset($_SESSION['login'])) {
+            header('Location:' . BASEURL . 'login');
+            exit;
+        }
 
-		$data = [
-			'judul' => "Contact list",
-			'contact' => $this->model('contact_model')->getAllContact()
-		];
+        $data = [
+            'judul' => "Contact list",
+            'contact' => $this->model('contact_model')->getAllContact(),
+        ];
 
+        $this->view("admin/index_view", $data);
+        $this->view("admin/shared/header_view");
+        $this->view("admin/pages/contact_view", $data);
+        $this->view("admin/shared/footer_view");
+    }
 
-		$this->view("admin/index_view", $data);
-		$this->view("admin/shared/header_view");
-		$this->view("admin/pages/contact_view", $data);
-		$this->view("admin/shared/footer_view");
-	}
+    function print($request) {
+        $perihal = $request;
+        $data['cetakinfo'] = $this->model('contact_model')->getContactPerihal($perihal);
 
-	public function print($request)
-	{
-		$perihal=$request;
-		$data['cetakinfo'] = $this->model('contact_model')->getContactPerihal($perihal);
+        // var_dump($data['cetakinfo']);
 
-		// var_dump($data['cetakinfo']);
-
-		$mpdf = new \Mpdf\Mpdf();
-		$html = '
+        $mpdf = new \Mpdf\Mpdf();
+        $html = '
 		<table width="100%">
 			<tbody>
 				<tr class="noborder" align="center">
-					<td rowspan="4" width="140" style="text-align:center"><img src="'. ASSET . '\cms\img\Untitled-2.jpg' . '" height="110"></td>
+					<td rowspan="4" width="140" style="text-align:center"><img src="' . ASSET . '\cms\img\Untitled-2.jpg' . '" height="110"></td>
 					<td>
 						<h2>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -70,10 +68,10 @@ class ContactController extends Controller
 				</tr>
 			</tbody>
 		</table>
-		
+
 			<div class="row mt-5">
 				<div class="col table-bordered d-flex justify-content-end">
-					<p> 
+					<p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,14 +89,16 @@ class ContactController extends Controller
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-					 Jakarta, 28 '. $data['cetakinfo']['tanggal'] .'</p>
+					 Jakarta, 28 ' . substr($data['cetakinfo']['tanggal'], 0, 10) . '</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col table-bordered">
-					<p>Hal		: '. $data['cetakinfo']['perihal'] .' </p>
+					<p>Hal		: ' . $data['cetakinfo']['perihal'] . ' </p>
 				</div>
 			</div>
 			<div class="row">
@@ -128,18 +128,18 @@ class ContactController extends Controller
 				<div class="col table-bordered d-flex">
 
 				<ul type="none" >
-					<li>Nama 			: '. $data['cetakinfo']['nama'] .'</li>
-					<li>Email 			: '. $data['cetakinfo']['email'] .'</li>
-					<li>Nomor tlp 		: '. $data['cetakinfo']['mobile'] .'</li>
-					<li>company 		: '. $data['cetakinfo']['company'] .'</li>
+					<li>Nama 			: ' . $data['cetakinfo']['nama'] . '</li>
+					<li>Email 			: ' . $data['cetakinfo']['email'] . '</li>
+					<li>Nomor tlp 		: ' . $data['cetakinfo']['mobile'] . '</li>
+					<li>company 		: ' . $data['cetakinfo']['company'] . '</li>
 				</ul>
 
 					<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						'. $data['cetakinfo']['pesan'] .' 
+						' . $data['cetakinfo']['pesan'] . '
 					</p>
 				</div>
 			</div>
-		
+
 			<div class="row mt-3">
 				<div class="col table-bordered d-flex">
 					<p> &nbsp;&nbsp;&nbsp;&nbsp; Demikian surat penawaran ini kami sampaikan. Kami berharap dapat menjalin kerja sama. Atas perhatiannya. Kami ucapkan terimakasih</p>
@@ -167,7 +167,7 @@ class ContactController extends Controller
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp; 
+					&nbsp;&nbsp;&nbsp;&nbsp;
 
 					Hormat Saya,
 
@@ -177,7 +177,7 @@ class ContactController extends Controller
 					<br>
 				</div>
 			</div>
-			
+
 			<div class="row mt-3">
 				<div class="col table-bordered d-flex justify-content-end">
 					<p>
@@ -202,8 +202,8 @@ class ContactController extends Controller
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;
 
-					'. $data['cetakinfo']['nama'] .'
-					
+					' . $data['cetakinfo']['nama'] . '
+
 					</p>
 					<p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -227,16 +227,16 @@ class ContactController extends Controller
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;
 
-					'. $data['cetakinfo']['company'] .'
-					
+					' . $data['cetakinfo']['company'] . '
+
 					</p>
 				</div>
 			</div>
 		</div>
 		';
 
-		$stylesheet = 
-		"
+        $stylesheet =
+            "
 		body {
 			margin: 0 auto;
 			}
@@ -244,7 +244,7 @@ class ContactController extends Controller
 				font-family: 'Source Sans Pro', sans-serif;
 				font-size: 12px;
 			}
-		
+
 			th {
 				text-align: center;
 			}
@@ -270,7 +270,7 @@ class ContactController extends Controller
 				line-height: 1.1;
 				font-weight:bold;
 			}
-		
+
 			.kop-fak td {
 				font-size: 24px;
 				font-weight: bold;
@@ -330,7 +330,7 @@ class ContactController extends Controller
 				font-weight:bold;
 				margin-bottom:5px;
 			}
-		
+
 			.tb_head{
 				margin-bottom:5px;
 			}
@@ -344,13 +344,13 @@ class ContactController extends Controller
 			.bold td{
 				font-weight:bold;
 			}
-		
-		
+
+
 			.watermark {
 				position: relative;
 				z-index: 1;
 			}
-		
+
 			.watermark .bg {
 			position: absolute;
 				z-index: -1;
@@ -361,35 +361,35 @@ class ContactController extends Controller
 				opacity: 0.1;
 				background-size: 400px 360px;
 			}
-				
+
 		";
 
-		$mpdf->WriteHTML($stylesheet, 1);
-		$mpdf->WriteHTML($html);
-		$mpdf->Output();
+        $mpdf->WriteHTML($stylesheet, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
 
-		// $this->view("admin/pages/preview_message_view");
-		// $this->view("admin/shared/footer_view");
+        // $this->view("admin/pages/preview_message_view");
+        // $this->view("admin/shared/footer_view");
 
-	}
+    }
 
-	public function show($request)
-	{
-		// code here show here
-	}
+    public function show($request)
+    {
+        // code here show here
+    }
 
-	public function create()
-	{
-		// code here create here
-	}
+    public function create()
+    {
+        // code here create here
+    }
 
-	public function update($request)
-	{
-		// code here update here
-	}
+    public function update($request)
+    {
+        // code here update here
+    }
 
-	public function remove($request)
-	{
-		// code here remove here
-	}
+    public function remove($request)
+    {
+        // code here remove here
+    }
 }

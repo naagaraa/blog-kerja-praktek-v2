@@ -16,6 +16,7 @@
         "mjaschen/phpgeo": "^3.1",
         "mpdf/mpdf": "^8.0",
         "vlucas/phpdotenv": "^5.2",
-        "bramus/router": "~1.5"
+        "bramus/router": "~1.5",
+        "symfony/var-dumper": "^5.3"
     }
 }

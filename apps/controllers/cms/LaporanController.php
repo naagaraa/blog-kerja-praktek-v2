@@ -28,4 +28,39 @@ class LaporanController extends Controller
         $this->view("admin/shared/footer_view");
     }
 
+    public function cetak_artikel()
+    {
+        $bulan = htmlspecialchars($_POST["bulan"]);
+        $tanggal = htmlspecialchars($_POST["tanggal"]);
+        $tahun = htmlspecialchars($_POST["tahun"]);
+        $limit = htmlspecialchars($_POST["limit"]);
+        $order = htmlspecialchars($_POST["order"]);
+
+        $waktu = "{$tahun}-{$bulan}-{$tanggal}";
+        $data = [
+            "waktu" => $waktu,
+            "limit" => $limit,
+            "order" => $order,
+        ];
+
+        $artikel = $this->model("Visitor_model")->getDataArtikel($data);
+
+        if (!empty($artikel)) {
+
+            $message = [
+                "success" => true,
+                "message" => 'data ditemukan',
+                "data" => $artikel,
+            ];
+        } else {
+            $message = [
+                "success" => false,
+                "message" => 'data tidak ada / tidak terdaftar',
+                "data" => null,
+            ];
+        }
+
+        echo json_encode($message);
+    }
+
 }
