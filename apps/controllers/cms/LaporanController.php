@@ -34,13 +34,11 @@ class LaporanController extends Controller
         $tanggal = htmlspecialchars($_POST["tanggal"]);
         $tahun = htmlspecialchars($_POST["tahun"]);
         $limit = htmlspecialchars($_POST["limit"]);
-        $order = htmlspecialchars($_POST["order"]);
 
         $waktu = "{$tahun}-{$bulan}-{$tanggal}";
         $data = [
             "waktu" => $waktu,
             "limit" => $limit,
-            "order" => $order,
         ];
 
         $artikel = $this->model("Visitor_model")->getDataArtikel($data);
@@ -50,13 +48,86 @@ class LaporanController extends Controller
             $message = [
                 "success" => true,
                 "message" => 'data ditemukan',
-                "data" => $artikel,
+                "datas" => $artikel,
             ];
         } else {
             $message = [
                 "success" => false,
                 "message" => 'data tidak ada / tidak terdaftar',
-                "data" => null,
+                "datas" => null,
+            ];
+        }
+
+        echo json_encode($message);
+    }
+
+    public function cetak_contact()
+    {
+        $bulan = htmlspecialchars($_POST["bulan"]);
+        $tanggal = htmlspecialchars($_POST["tanggal"]);
+        $tahun = htmlspecialchars($_POST["tahun"]);
+        $limit = htmlspecialchars($_POST["limit"]);
+
+        $waktu = "{$tahun}-{$bulan}-{$tanggal}";
+        $data = [
+            "tanggal" => $waktu,
+            "limit" => $limit,
+        ];
+
+        $contact = $this->model("Contact_model")->getDataContact($data);
+
+        if (!empty($contact)) {
+
+            $message = [
+                "success" => true,
+                "message" => 'data ditemukan',
+                "datas" => $contact,
+            ];
+        } else {
+            $message = [
+                "success" => false,
+                "message" => 'data tidak ada / tidak terdaftar',
+                "datas" => null,
+            ];
+        }
+
+        echo json_encode($message);
+    }
+
+    public function cetak()
+    {
+        $bulan = htmlspecialchars($_POST["bulan"]);
+        $tanggal = htmlspecialchars($_POST["tanggal"]);
+        $tahun = htmlspecialchars($_POST["tahun"]);
+        $limit = htmlspecialchars($_POST["limit"]);
+
+        $waktu = "{$tahun}-{$bulan}-{$tanggal}";
+        $data = [
+            "waktu" => $waktu,
+            "tanggal" => $waktu,
+            "limit" => $limit,
+        ];
+
+        // dump($data);
+
+        $artikel = $this->model("Visitor_model")->getDataArtikel($data);
+        $contact = $this->model("Contact_model")->getDataContact($data);
+
+        // dump($artikel);
+        // dump($contact);
+
+        if (!empty($artikel) or !empty($contact)) {
+            $message = [
+                "success" => true,
+                "message" => 'data ditemukan',
+                "artikel" => $artikel,
+                "contact" => $contact,
+            ];
+        } else {
+            $message = [
+                "success" => false,
+                "message" => 'data tidak ada / tidak terdaftar',
+                "datas" => null,
             ];
         }
 

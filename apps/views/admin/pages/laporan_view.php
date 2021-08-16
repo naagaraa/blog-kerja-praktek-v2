@@ -70,16 +70,24 @@
                         </form>
 					</div>
 				</div>
-                <div class="panel">
+                <div class="panel" id="report-artikel-show">
 					<div class="panel-heading">
                         <div class="panel-body">
                             <label for="#">show data</label>
                             <div class="row">
-                                <canvas id="myChart" width="400" height="150"></canvas>
+                                <canvas id="artikel-chard" width="400" height="150"></canvas>
                             </div>
-                            <div class="row" id="report-artikel">
-                                <p id="showData"></p>
-
+                            <div class="row mt-5">
+                                <table id="table-artikel" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>judul</th>
+                                            <th>views</th>
+                                            <th>views ip</th>
+                                            <th>time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -99,8 +107,8 @@
                         <form id="form-contact">
                             <div class="row ">
                                 <div class="col-md-2">
-                                    <label for="bulan-artikel">bulan</label>
-                                    <select id="bulan-artikel" class="form-control">
+                                    <label for="bulan-contact">bulan</label>
+                                    <select id="bulan-contact" class="form-control">
                                         <option value = "01">januari</option>
                                         <option value = "02">february</option>
                                         <option value = "03">maret</option>
@@ -116,24 +124,24 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="tanggal-artikel">tanggal</label>
-                                    <select id="tanggal-artikel" class="form-control">
+                                    <label for="tanggal-contact">tanggal</label>
+                                    <select id="tanggal-contact" class="form-control">
                                         <?php for ($tanggal = 1; $tanggal <= 31; $tanggal++): ?>
                                             <option><?=$tanggal?></option>
                                         <?php endfor;?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="tahun-artikel">tahun</label>
-                                    <select  id="tahun-artikel" class="form-control">
+                                    <label for="tahun-contact">tahun</label>
+                                    <select  id="tahun-contact" class="form-control">
                                         <?php for ($tahun = 2000; $tahun <= (int) date("Y"); $tahun++): ?>
                                             <option><?=$tahun?></option>
                                         <?php endfor;?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label  for="limit-artikel">Limit</label>
-                                    <select id="limit-artikel" class="form-control">
+                                    <label  for="limit-contact">Limit</label>
+                                    <select id="limit-contact" class="form-control">
                                         <?php for ($limit = 5; $limit <= 35; $limit++): ?>
                                         <option><?=$limit?></option>
                                         <?php endfor;?>
@@ -146,12 +154,24 @@
                         </form>
 					</div>
 				</div>
-                <div class="panel">
+                <div class="panel" id="report-contact-show">
 					<div class="panel-heading">
                         <div class="panel-body">
-                                <div class="row">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores id nisi quos, ex atque eos, quibusdam, neque praesentium quae corporis ad dolore libero! Accusantium doloremque asperiores temporibus minima ipsam nam.
-                                </div>
+                            <!-- <div class="row">
+                                <canvas id="contact-chard" width="400" height="150"></canvas>
+                            </div> -->
+                            <div class="row">
+                                <table id="tabel-contact" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>judul</th>
+                                            <th>views</th>
+                                            <th>views ip</th>
+                                            <th>time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,8 +190,8 @@
                     <form id="form-report">
                     <div class="row ">
                                 <div class="col-md-2">
-                                    <label for="bulan-artikel">bulan</label>
-                                    <select id="bulan-artikel" class="form-control">
+                                    <label for="bulan-report">bulan</label>
+                                    <select id="bulan-report" class="form-control">
                                         <option value = "01">januari</option>
                                         <option value = "02">february</option>
                                         <option value = "03">maret</option>
@@ -187,24 +207,24 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="tanggal-artikel">tanggal</label>
-                                    <select id="tanggal-artikel" class="form-control">
+                                    <label for="tanggal-report">tanggal</label>
+                                    <select id="tanggal-report" class="form-control">
                                         <?php for ($tanggal = 1; $tanggal <= 31; $tanggal++): ?>
                                             <option><?=$tanggal?></option>
                                         <?php endfor;?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="tahun-artikel">tahun</label>
-                                    <select  id="tahun-artikel" class="form-control">
+                                    <label for="tahun-report">tahun</label>
+                                    <select  id="tahun-report" class="form-control">
                                         <?php for ($tahun = 2000; $tahun <= (int) date("Y"); $tahun++): ?>
                                             <option><?=$tahun?></option>
                                         <?php endfor;?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label  for="limit-artikel">Limit</label>
-                                    <select id="limit-artikel" class="form-control">
+                                    <label  for="limit-report">Limit</label>
+                                    <select id="limit-report" class="form-control">
                                         <?php for ($limit = 5; $limit <= 35; $limit++): ?>
                                         <option><?=$limit?></option>
                                         <?php endfor;?>
@@ -217,12 +237,39 @@
                         </form>
 					</div>
 				</div>
-                <div class="panel">
+                <div class="panel" id="report-all">
 					<div class="panel-heading">
                         <div class="panel-body">
-                                <div class="row">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores id nisi quos, ex atque eos, quibusdam, neque praesentium quae corporis ad dolore libero! Accusantium doloremque asperiores temporibus minima ipsam nam.
-                                </div>
+                            <div class="row">
+                                <label for="artikel-chard-report">statistic content</label>
+                                <canvas id="artikel-chard-report" width="400" height="150"></canvas>
+                            </div>
+                            <div class="row mt-5">
+                                <label for="table-artikel-report">informasi kunjungan pada content</label>
+                                <table id="table-artikel-report" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>judul</th>
+                                            <th>views</th>
+                                            <th>views ip</th>
+                                            <th>time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row mt-5">
+                                <label for="tabel-contact-report">informasi contact </label>
+                                <table id="tabel-contact-report" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>judul</th>
+                                            <th>views</th>
+                                            <th>views ip</th>
+                                            <th>time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
