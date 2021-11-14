@@ -9,7 +9,6 @@ class UserController extends Controller
 	{
 		// constructor here
 		session_start();
-
 	}
 	public function index()
 	{
@@ -50,7 +49,7 @@ class UserController extends Controller
 	{
 		// code here remove here
 		// cek jika bukan super admin / admin
-		$id=$request;
+		$id = $request;
 		if (!isset($_SESSION['login'])) {
 			header('Location:' . BASEURL . 'login');
 			exit;
@@ -59,7 +58,7 @@ class UserController extends Controller
 		 * Belum Buat Pengecekan jika file gambar tidak ada
 		 */
 		$data['user'] = $this->model('User_model')->getUserId($id);
-		
+
 		$filename = $data['user']['foto'];
 		$path =  PathImageAccount . $filename;
 
@@ -91,7 +90,7 @@ class UserController extends Controller
 	}
 	public function approve($request)
 	{
-		$id=$request;
+		$id = $request;
 		// cek jika bukan super admin / admin
 		if (!isset($_SESSION['login'])) {
 			header('Location:' . BASEURL . 'login');
@@ -111,6 +110,7 @@ class UserController extends Controller
 			'user_name' => $data['user']['user_name'],
 			'passw' => $data['user']['passw'],
 			'level' => $data['user']['level'],
+			'status' => 1,
 		];
 
 		if ($this->model('User_model')->approveUserId($approveuser) > 0) {
@@ -121,7 +121,7 @@ class UserController extends Controller
 
 	public function unapprove($request)
 	{
-		$id=$request;
+		$id = $request;
 		// cek jika bukan super admin / admin
 		if (!isset($_SESSION['login'])) {
 			header('Location:' . BASEURL . 'login');
@@ -141,6 +141,7 @@ class UserController extends Controller
 			'user_name' => $data['user']['user_name'],
 			'passw' => $data['user']['passw'],
 			'level' => $data['user']['level'],
+			'status' => 0,
 		];
 		if ($this->model('User_model')->unApproveUserId($unapproveuser) > 0) {
 			// jika sukses

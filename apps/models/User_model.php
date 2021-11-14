@@ -61,7 +61,7 @@ class User_model
 		$this->db->bind('passw', $data['passw']);
 		$this->db->bind('level', $data['level']);
 		$this->db->bind('status', $data['status']);
-		
+
 		// untuk file
 		$this->db->bind('foto', $data['foto']);
 
@@ -96,6 +96,52 @@ class User_model
 
 		// binding untuk data file
 		$this->db->bind('foto', $data['image']);
+
+		$this->db->execute();
+		return $this->db->rowCount();
+	}
+
+	public function approveUserId($data)
+	{
+		// UPDATE `tb_user` SET `id`,`userid`,`nama`,`deskripsi`=,`foto`=,`user_name`=,`passw`=,`level`=,`status`= WHERE 1
+		$query = "UPDATE tb_user SET id=:id, userid=:userid, nama=:nama, deskripsi=:deskripsi, foto=:foto, user_name=:username, passw=:passw, level=:level, status=:status WHERE id=:id";
+		$this->db->query($query);
+
+		// binding data
+		$this->db->bind('id', $data['id']);
+		$this->db->bind('userid', $data['userid']);
+		$this->db->bind('nama', $data['nama']);
+		$this->db->bind('deskripsi', $data['deskripsi']);
+		$this->db->bind('username', $data['user_name']);
+		$this->db->bind('passw', $data['passw']);
+		$this->db->bind('level', $data['level']);
+		$this->db->bind('status', $data['status']);
+
+		// untuk file
+		$this->db->bind('foto', $data['foto']);
+
+		$this->db->execute();
+		return $this->db->rowCount();
+	}
+
+	public function unapproveUserId($data)
+	{
+		// UPDATE `tb_user` SET `id`,`userid`,`nama`,`deskripsi`=,`foto`=,`user_name`=,`passw`=,`level`=,`status`= WHERE 1
+		$query = "UPDATE tb_user SET id=:id, userid=:userid, nama=:nama, deskripsi=:deskripsi, foto=:foto, user_name=:username, passw=:passw, level=:level, status=:status WHERE id=:id";
+		$this->db->query($query);
+
+		// binding data
+		$this->db->bind('id', $data['id']);
+		$this->db->bind('userid', $data['userid']);
+		$this->db->bind('nama', $data['nama']);
+		$this->db->bind('deskripsi', $data['deskripsi']);
+		$this->db->bind('username', $data['user_name']);
+		$this->db->bind('passw', $data['passw']);
+		$this->db->bind('level', $data['level']);
+		$this->db->bind('status', $data['status']);
+
+		// untuk file
+		$this->db->bind('foto', $data['foto']);
 
 		$this->db->execute();
 		return $this->db->rowCount();
