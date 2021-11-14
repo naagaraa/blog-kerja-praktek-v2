@@ -5,39 +5,42 @@ use MiniMvc\Apps\Core\Bootstraping\Controller;
 
 class ContactController extends Controller
 {
-    public function __construct()
-    {
-        // constructor here
-        session_start();
+	public function __construct()
+	{
+		// constructor here
+		session_start();
+	}
+	public function index()
+	{
+		// code index here
+		if (!isset($_SESSION['login'])) {
+			header('Location:' . BASEURL . 'login');
+			exit;
+		}
 
-    }
-    public function index()
-    {
-        // code index here
-        if (!isset($_SESSION['login'])) {
-            header('Location:' . BASEURL . 'login');
-            exit;
-        }
+		$data = [
+			'judul' => "Contact list",
+			'contact' => $this->model('contact_model')->getAllContact(),
+		];
 
-        $data = [
-            'judul' => "Contact list",
-            'contact' => $this->model('contact_model')->getAllContact(),
-        ];
+		$this->view("admin/index_view", $data);
+		$this->view("admin/shared/header_view");
+		$this->view("admin/pages/contact_view", $data);
+		$this->view("admin/shared/footer_view");
+	}
 
-        $this->view("admin/index_view", $data);
-        $this->view("admin/shared/header_view");
-        $this->view("admin/pages/contact_view", $data);
-        $this->view("admin/shared/footer_view");
-    }
+	function print($request)
+	{
+		// $perihal = $request;
+		// $data['cetakinfo'] = $this->model('contact_model')->getContactPerihal($perihal);
+		$id = $request;
+		$data['cetakinfo'] = $this->model('contact_model')->getContactId($id);
 
-    function print($request) {
-        $perihal = $request;
-        $data['cetakinfo'] = $this->model('contact_model')->getContactPerihal($perihal);
+		// var_dump($data['cetakinfo']);
+		// die;
 
-        // var_dump($data['cetakinfo']);
-
-        $mpdf = new \Mpdf\Mpdf();
-        $html = '
+		$mpdf = new \Mpdf\Mpdf();
+		$html = '
 		<table width="100%">
 			<tbody>
 				<tr class="noborder" align="center">
@@ -133,8 +136,10 @@ class ContactController extends Controller
 					<li>Nomor tlp 		: ' . $data['cetakinfo']['mobile'] . '</li>
 					<li>company 		: ' . $data['cetakinfo']['company'] . '</li>
 				</ul>
-
-					<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<p>
+						mempunyai keperluan sebagai berikut,
+					</p>
+					<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						' . $data['cetakinfo']['pesan'] . '
 					</p>
 				</div>
@@ -235,8 +240,8 @@ class ContactController extends Controller
 		</div>
 		';
 
-        $stylesheet =
-            "
+		$stylesheet =
+			"
 		body {
 			margin: 0 auto;
 			}
@@ -364,32 +369,32 @@ class ContactController extends Controller
 
 		";
 
-        $mpdf->WriteHTML($stylesheet, 1);
-        $mpdf->WriteHTML($html);
-        $mpdf->Output();
+		$mpdf->WriteHTML($stylesheet, 1);
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
 
-        // $this->view("admin/pages/preview_message_view");
-        // $this->view("admin/shared/footer_view");
+		// $this->view("admin/pages/preview_message_view");
+		// $this->view("admin/shared/footer_view");
 
-    }
+	}
 
-    public function show($request)
-    {
-        // code here show here
-    }
+	public function show($request)
+	{
+		// code here show here
+	}
 
-    public function create()
-    {
-        // code here create here
-    }
+	public function create()
+	{
+		// code here create here
+	}
 
-    public function update($request)
-    {
-        // code here update here
-    }
+	public function update($request)
+	{
+		// code here update here
+	}
 
-    public function remove($request)
-    {
-        // code here remove here
-    }
+	public function remove($request)
+	{
+		// code here remove here
+	}
 }

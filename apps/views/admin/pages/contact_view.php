@@ -36,18 +36,18 @@
 									<tbody>
 										<?php $i = 1;
 										foreach ($data['contact'] as $contact) : ?>
-										<tr>
-											<th scope="row"><?= $i++; ?></th>
-											<td><?= substr($contact['nama'],0,9); ?></td>
-											<td><?= substr($contact['email'],0,100); ?></td>
-											<td><?= substr($contact['perihal'],0,100); ?></td>
-											<td><?= substr($contact['tanggal'],0,100); ?></td>
-											<td>
-												<a target="_blank" href="<?= BASEURL ?>contact/preview/<?= $contact['perihal']; ?>">
-													<button type="button" class="btn btn-info">Cetak</button>
-												</a>
-											</td>
-										</tr>
+											<tr>
+												<th scope="row"><?= $i++; ?></th>
+												<td><?= substr($contact['nama'], 0, 9); ?></td>
+												<td><?= substr($contact['email'], 0, 100); ?></td>
+												<td><?= substr($contact['perihal'], 0, 100); ?></td>
+												<td><?= substr($contact['tanggal'], 0, 100); ?></td>
+												<td>
+													<a target="_blank" href="<?= BASEURL ?>contact/preview/<?= $contact['id']; ?>">
+														<button type="button" class="btn btn-info">Cetak</button>
+													</a>
+												</td>
+											</tr>
 										<?php endforeach; ?>
 									</tbody>
 								</table>
