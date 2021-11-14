@@ -9,7 +9,6 @@ class NewsController extends Controller
     {
         // constructor here
         session_start();
-
     }
     public function index()
     {
@@ -243,6 +242,7 @@ class NewsController extends Controller
 
             $visitor = $this->model('Visitor_model')->getInfoVisitUniqId($uniqid);
 
+            // dd($uniqid);
             // var_dump($waktuUpdate);
             $dataviews = [
                 'id' => (int) htmlspecialchars($_POST['id']),
@@ -678,7 +678,6 @@ class NewsController extends Controller
             echo "kesalahan pada gambar";
             die;
         }
-
     }
 
     public function publishArtikel($request)

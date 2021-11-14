@@ -38,7 +38,7 @@ class NewsController extends Controller
 			'total' => $totalHalaman,
 			'pages' => $pagesPerHalaman
 		];
-		
+
 
 		$this->view('blog/index_view', $data);
 		$this->view('blog/shared/header_view');
@@ -64,6 +64,10 @@ class NewsController extends Controller
 		$data['News'] = $this->model('Artikel_model')->getLimitSideArtikel();
 		$detail = $this->model('Artikel_model')->getArtikelId($urlid);
 
+		// dd($detail["status"]);
+
+
+
 
 
 		$visitor = $this->model('Visitor_model')->getInfoVisitId($urlid);
@@ -84,6 +88,7 @@ class NewsController extends Controller
 		];
 
 		if ($this->model('Visitor_model')->UpdateData($dataviews) > 0) {
+
 			// success
 			$data = [
 				'title' => $title,
@@ -182,11 +187,11 @@ class NewsController extends Controller
 					</div>
 				</div
 			</a>';
-			};
+		};
 
 		echo $txt;
 	}
-	
+
 	public function page($id = '0')
 	{
 		// init user info

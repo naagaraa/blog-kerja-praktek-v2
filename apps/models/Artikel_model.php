@@ -138,11 +138,9 @@ class Artikel_model
 
     public function statusArtikelId($data)
     {
-        // var_dump($data);
-        // die;
-
         // (`id`, `urlid`, `judul`, `status`, `artikel`, `penulis`, `cover`, `image`, `posting`)
         $query = "UPDATE " . $this->table . " SET id=:id, uniqid=:uniqid, urlid=:urlid, judul=:judul, status=:status, artikel=:artikel, penulis=:penulis, cover=:cover, image=:image, posting=:posting WHERE id=:id";
+
         $this->db->query($query);
 
         // binding untuk data text

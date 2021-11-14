@@ -147,37 +147,15 @@
 					<!-- content -->
 					<div class="row">
 						<div class="col-md-12">
-							<h2><?= $data['detailNews']['judul']; ?></h2>
-							<p><?= $data['detailNews']['penulis']; ?> &nbsp; &nbsp; &nbsp; | <span> &nbsp; &nbsp; &nbsp;
-									<?= substr($data['detailNews']['posting'], 0, 10); ?></span> &nbsp; &nbsp; &nbsp; |
-								<span> &nbsp; &nbsp; &nbsp;<i class="fa fa-eye"></i> <?= $data['views'] + 1; ?></span>
-							</p>
-							<p>
-								<!-- AddToAny BEGIN -->
-							<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-								<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-								<a class="a2a_button_facebook"></a>
-								<a class="a2a_button_twitter"></a>
-								<a class="a2a_button_whatsapp"></a>
-								<a class="a2a_button_telegram"></a>
-								<a class="a2a_button_linkedin"></a>
-							</div>
-							<script async src="https://static.addtoany.com/menu/page.js"></script>
-							<!-- AddToAny END -->
-							</p>
-							<div class="thumbnail">
-								<img class="responsive" src="<?= BASEURL; ?>/upload/contents/image/<?= $data['detailNews']['image']; ?>"
-									alt="cover" width="350">
-							</div>
-							<div class="col">
-								<div class="caption mt-30 ">
-									<p><?= $data['detailNews']['artikel']; ?></p>
-								</div>
-								<br>
-								<br>
-								<p>
-								<h4>Share This Artikel</h4>
+							<?php if ($data['detailNews']['status'] === "1") : ?>
+								<h2><?= $data['detailNews']['judul']; ?></h2>
+								<p><?= $data['detailNews']['penulis']; ?> &nbsp; &nbsp; &nbsp; | <span> &nbsp; &nbsp; &nbsp;
+										<?= substr($data['detailNews']['posting'], 0, 10); ?></span> &nbsp; &nbsp; &nbsp; |
+									<span> &nbsp; &nbsp; &nbsp;<i class="fa fa-eye"></i> <?= $data['views'] + 1; ?></span>
 								</p>
+							<?php endif ?>
+
+							<?php if ($data['detailNews']['status'] === "1") : ?>
 								<p>
 									<!-- AddToAny BEGIN -->
 								<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -191,6 +169,39 @@
 								<script async src="https://static.addtoany.com/menu/page.js"></script>
 								<!-- AddToAny END -->
 								</p>
+								<div class="thumbnail">
+
+									<img class="responsive" src="<?= BASEURL; ?>/upload/contents/image/<?= $data['detailNews']['image']; ?>" alt="cover" width="350">
+								</div>
+							<?php endif ?>
+							<div class="col">
+								<?php if ($data['detailNews']['status'] === "1") : ?>
+									<p><?= $data['detailNews']['artikel']; ?></p>
+									<div class="caption mt-30 ">
+
+									</div>
+									<br>
+									<br>
+									<p>
+									<h4>Share This Artikel</h4>
+									</p>
+									<p>
+										<!-- AddToAny BEGIN -->
+									<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+										<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+										<a class="a2a_button_facebook"></a>
+										<a class="a2a_button_twitter"></a>
+										<a class="a2a_button_whatsapp"></a>
+										<a class="a2a_button_telegram"></a>
+										<a class="a2a_button_linkedin"></a>
+									</div>
+									<script async src="https://static.addtoany.com/menu/page.js"></script>
+									<!-- AddToAny END -->
+									</p>
+								<?php else : ?>
+									<h1>Your Artikel what wour find not found! sorry.</h1>
+									<p>back to home page <a href="<?= BASEURL ?>">back here</a> </p>
+								<?php endif ?>
 							</div>
 						</div>
 					</div>
@@ -202,25 +213,25 @@
 					<!-- content -->
 					<h4>Content Terbaru</h4>
 					<?php foreach ($data['artikel2'] as $row) : ?>
-					<!-- <?php
-									// bersihkan karakter html
-									// $removeHtmltag = strip_tags($row['artikel']);
-									// $deskripsi = substr($removeHtmltag, 0, 160);
-									?> -->
+						<!-- <?php
+								// bersihkan karakter html
+								// $removeHtmltag = strip_tags($row['artikel']);
+								// $deskripsi = substr($removeHtmltag, 0, 160);
+								?> -->
 
 
-					<?php if ($row['status'] == '1') : ?>
+						<?php if ($row['status'] == '1') : ?>
 
-					<a href="<?= BASEURL ?>news/detail/<?= $row['urlid']; ?>" target="_blank">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item"><?= $row['judul'] ?></li>
-								</ul>
-							</div>
-						</div>
-					</a>
-					<?php endif; ?>
+							<a href="<?= BASEURL ?>news/detail/<?= $row['urlid']; ?>" target="_blank">
+								<div class="row">
+									<div class="col-md-12">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item"><?= $row['judul'] ?></li>
+										</ul>
+									</div>
+								</div>
+							</a>
+						<?php endif; ?>
 
 					<?php endforeach; ?>
 					<!-- end content -->

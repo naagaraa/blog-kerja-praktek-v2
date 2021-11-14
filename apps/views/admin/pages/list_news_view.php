@@ -35,51 +35,48 @@
 									<tbody>
 										<?php $i = 1; ?>
 										<?php foreach ($data['listNews'] as $row) : ?>
-										<tr>
-											<th scope="row"><?= $i++ ?></th>
-											<td><?= $row['urlid']; ?></td>
-											<td>
-												<?php if ($row['status'] == 1) :
-													?>
-												Publish
-												<?php else :
-													?>
-												Unpublish
-												<?php endif;
-													?>
-											</td>
-											<td><?= $row['penulis']; ?></td>
-											<td>
-												<div class="btn-group" role="group" aria-label="Basic example">
-
+											<tr>
+												<th scope="row"><?= $i++ ?></th>
+												<td><?= $row['urlid']; ?></td>
+												<td>
 													<?php if ($row['status'] == 1) :
-														?>
-													<a href="<?= BASEURL ?>artikel/publish/<?= $row['urlid']; ?>" <button type="button"
-														class="btn btn-primary">unPublish</button>
-													</a>
-													<?php else : ?>
-													<a href="<?= BASEURL ?>artikel/unpublish/<?= $row['urlid']; ?>" <button type="button"
-														class="btn btn-info">Publish</button>
-													</a>
+													?>
+														Publish
+													<?php else :
+													?>
+														Unpublish
 													<?php endif;
+													?>
+												</td>
+												<td><?= $row['penulis']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="Basic example">
+														<?php if ($row['status'] == 0) :
+														?>
+															<a href="<?= BASEURL ?>artikel/publish/<?= $row['urlid']; ?>"><button type="button" class="btn btn-primary">Publish</button>
+															</a>
+														<?php else : ?>
+															<a href="<?= BASEURL ?>artikel/unpublish/<?= $row['urlid']; ?>"><button type="button" class="btn btn-info">unPublish</button>
+															</a>
+														<?php endif;
 														?>
 
-													<a href="<?= BASEURL ?>news/detail/<?= $row['urlid']; ?>" target="_blank">
-														<button type="button" class="btn btn-warning">Preview</button>
-													</a>
-													<a href="<?= BASEURL . 'artikel/edit/' . $row['urlid']; ?>">
-														<button type="button" class="btn btn-success">Edit</button>
-													</a>
-													<?php //if ($_SESSION['login'] == true & $_SESSION['level'] == '0') :
+														<a href="<?= BASEURL ?>news/detail/<?= $row['urlid']; ?>" target="_blank">
+															<button type="button" class="btn btn-warning">Preview</button>
+														</a>
+														<a href="<?= BASEURL . 'artikel/edit/' . $row['urlid']; ?>">
+															<button type="button" class="btn btn-success">Edit</button>
+														</a>
+														<?php //if ($_SESSION['login'] == true & $_SESSION['level'] == '0') :
 														?>
-													<a href="<?= BASEURL . 'artikel/remove/' . $row['uniqid']; ?>">
-														<button type="button" class="btn btn-danger">Delete</button>
-													</a>
-													<?php //endif;
+														<a href="<?= BASEURL . 'artikel/remove/' . $row['uniqid']; ?>">
+															<button type="button" class="btn btn-danger">Delete</button>
+														</a>
+														<?php //endif;
 														?>
-												</div>
-											</td>
-										</tr>
+													</div>
+												</td>
+											</tr>
 										<?php endforeach; ?>
 									</tbody>
 								</table>

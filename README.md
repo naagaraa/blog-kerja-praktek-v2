@@ -403,5 +403,3 @@ hi, kamu bisa support dengan cara follow account sosial media di bawah atau memb
 * Sandhika galih : [ IG Web programing unpas ](https://www.instagram.com/sandhikagalih/)
 
 * Naagaraa : [ IG Naagaraa ](https://www.instagram.com/naagaraa/)
-#   b l o g - k e r j a - p r a k t e k - v 2  
- 

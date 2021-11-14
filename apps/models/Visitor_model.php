@@ -47,7 +47,8 @@ class Visitor_model
 
     public function getInfoVisitUniqId($uniqid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uniqid=:uniqid');
+        // dd($uniqid);
+        $this->db->query("SELECT * FROM {$this->table} WHERE uniqid=:uniqid");
         $this->db->bind('uniqid', $uniqid);
         return $this->db->singleArray();
     }
