@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 03:29 PM
+-- Generation Time: Nov 14, 2021 at 03:31 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -218,7 +218,6 @@ INSERT INTO `tb_user` (`id`, `userid`, `nama`, `deskripsi`, `foto`, `user_name`,
 (1, '1', 'eka jaya nagara', '<p>programer PHP expert developer</p>\n\n<p>&nbsp;</p>\n', '24cc910d43b00e4b52d35be4ce225447.jpg', 'root', '4c59916b36b13143d8d4746466d79158', 0, 1),
 (19, '19', 'nagara', '<p>admin dari pt sps dan programmer</p>\r\n', '414e54446aa284d88ab0b1ef37cac8b4.jpg', 'programmer', 'c6e6e3b854490d8ff3a50f53e812566a', 1, 1),
 (20, '20', 'andi diputra', '<p>digital marketing pt strategic partner solution</p>\n', 'a76e38987135eb9853430a26aa465123.jpg', 'andi', '1d69ded7713f92f0f41ddfc0cdbcdb80', 2, 1),
-(21, '6115e068dd139', 'nita', '<p>user add testing</p>\r\n', '5d96b3aa0c8e4b7adfaf35bc0f3703a7.jpg', 'nita12', '89e2758116d9ea57700ce3ef2e1cdedc', 2, 0),
 (22, '61911c86bb1b5', 'made', '<p>saya made</p>\r\n', 'db19e0a6a249013eb14c1fc449b67c38.png', 'anggraini', 'ef4aed377f4c0cf545b8622c9fb1bcf4', 1, 0);
 
 -- --------------------------------------------------------
