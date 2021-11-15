@@ -42,13 +42,25 @@ class Database
 		}
 	}
 
-	// membuat generate query
+	/**
+	 * membuat function query pada sql
+	 *
+	 * @param string $query
+	 * @return void
+	 */
 	public function query($query)
 	{
 		$this->statement = $this->dbh->prepare($query);
 	}
 
-	// data binding
+	/**
+	 * untuk melakukan binding sebelum data di masukan ke database
+	 *
+	 * @param [type] $param
+	 * @param [type] $value
+	 * @param [type] $type
+	 * @return void
+	 */
 	public function bind($param, $value, $type =  null)
 	{
 		if (is_null($type)) {
@@ -73,16 +85,20 @@ class Database
 		$this->statement->bindValue($param, $value, $type);
 	}
 
+	/**
+	 * statement untuk execute database
+	 *
+	 * @return void
+	 */
 	public function execute()
 	{
 		$this->statement->execute();
 	}
 
 	/**
-	 * @resultSetArray
-	 * 
-	 * untuk menampilkan semua data query dengan array
-	 * assosiatif foramt
+	 * membuat hasil berupa set array associative
+	 *
+	 * @return void
 	 */
 	public function resultSetArray()
 	{
@@ -91,10 +107,9 @@ class Database
 	}
 
 	/**
-	 * @resultSetJSON
-	 * 
-	 * untuk menampilkan semua data query dengan JSON
-	 * format
+	 * membuat hasil berupa set format JSON
+	 *
+	 * @return void
 	 */
 	public function resultSetJSON()
 	{
@@ -104,10 +119,9 @@ class Database
 	}
 
 	/**
-	 * @resultSetObject
-	 * 
-	 * untuk menampilkan semua data query dengan Object
-	 * format
+	 * membuat hasil set format Object
+	 *
+	 * @return void
 	 */
 	public function resultSetObject()
 	{
@@ -116,10 +130,9 @@ class Database
 	}
 
 	/**
-	 * @singleArray
-	 * 
-	 * untuk menampilkan single data query dengan array
-	 * assosiatif format
+	 * membuat hasil set format array untuk single data
+	 *
+	 * @return array
 	 */
 	public function singleArray()
 	{
@@ -128,10 +141,9 @@ class Database
 	}
 
 	/**
-	 * @singleJSON
-	 * 
-	 * untuk menampilkan single data query dengan JSON
-	 * format
+	 * membuat hasil set format JSON untuk single data
+	 *
+	 * @return String
 	 */
 	public function singleJSON()
 	{
@@ -141,10 +153,9 @@ class Database
 	}
 
 	/**
-	 * @singleObject
-	 * 
-	 * untuk menampilkan single data query dengan object
-	 * format
+	 * membuat hasil set format obejct untuk single data
+	 *
+	 * @return object
 	 */
 	public function singleObject()
 	{
@@ -154,9 +165,9 @@ class Database
 
 
 	/**
-	 * @rowCount
-	 * 
-	 * untuk menampilkan jumlah row yang ada pada tabel
+	 * membuat menhitung row yang berhasil
+	 *
+	 * @return void
 	 */
 	public function rowCount()
 	{

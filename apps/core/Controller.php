@@ -2,8 +2,6 @@
 
 namespace MiniMvc\Apps\Core\Bootstraping;
 
-use Matrix\Functions;
-
 /**
  * ------------------------------------------------------------------
  * Documentasi Code Controller

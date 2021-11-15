@@ -14,6 +14,12 @@ class Error_404 extends Controller
 		// code here
 	}
 
+	/**
+	 * memanggil halaman 404
+	 *
+	 * @param string $response
+	 * @return void
+	 */
 	public function index($response = "Halaman tidak ditemukan")
 	{
 		$data = [

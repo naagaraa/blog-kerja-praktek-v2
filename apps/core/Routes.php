@@ -29,7 +29,11 @@ class Routes
 		}
 	}
 
-	// get URL
+	/**
+	 * membuat parser URL
+	 *
+	 * @return array
+	 */
 	public function ParserURL()
 	{
 		if (isset($_GET['url'])) {
@@ -45,6 +49,12 @@ class Routes
 		}
 	}
 
+	/**
+	 * method untuk menampilakn halaman 404
+	 *
+	 * @param string $message
+	 * @return void
+	 */
 	public function showerror_404($message = "404 Not Found")
 	{
 		header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
@@ -67,6 +77,11 @@ class Routes
 		die;
 	}
 
+	/**
+	 * method untuk default page halaman welcome
+	 *
+	 * @return void
+	 */
 	public function welcome()
 	{
 		$url = $this->ParserURL();
@@ -98,15 +113,23 @@ class Routes
 		die;
 	}
 
+	/**
+	 * method untuk memanggil controller method dan parameter digunakan pada routing
+	 *
+	 * @param string $controller
+	 * @param string $method
+	 * @param array $parameter
+	 * @return void
+	 */
 	public function Routing($controller, $method, $parameter = [])
 	{
 
 		// extract name folder
-		$newController = explode('/' ,$controller); 
+		$newController = explode('/', $controller);
 		$namafolder = '';
 
 		// var_dump(count($newController));
-		for ($i=0 ; $i <= count($newController) - 2 ; $i++) { 
+		for ($i = 0; $i <= count($newController) - 2; $i++) {
 			$namafolder .= $newController[$i] . '/';
 		}
 		// end extract name folder
@@ -124,8 +147,7 @@ class Routes
 
 
 		// jika nama folder ada handle here
-		if (!$namafolder) 
-		{
+		if (!$namafolder) {
 			// jika tidak berada di dalam folder : handle here
 			$controllers = end($newController);
 			$method = $method;
@@ -144,7 +166,7 @@ class Routes
 			# untuk method user
 			if (isset($method)) {
 				if (method_exists($controller, $method)) {
-					$method = $method;		
+					$method = $method;
 				} else {
 					$this->showerror_404("method tidak ditemukan harap cek file routes/Web.php");
 					die;
@@ -153,7 +175,7 @@ class Routes
 
 			# params user
 			if (!empty($params)) {
-				$params = array_values($params);			
+				$params = array_values($params);
 			} else {
 				$params = [];
 			}
@@ -161,9 +183,7 @@ class Routes
 			# call controller and method, and send params is !empy
 			call_user_func_array([$controller, $method], $params);
 			die;
-		}
-		else
-		{
+		} else {
 			// jika berada di dalam folder : handle here
 			$folder = $namafolder;
 			$controller = end($newController);

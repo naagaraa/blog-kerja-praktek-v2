@@ -97,6 +97,7 @@ class Info extends Controller
     return $os_platform;
   }
 
+  // get browser
   function getBrowser()
   {
 
