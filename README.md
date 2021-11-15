@@ -64,6 +64,9 @@ git clone https://github.com/naagaraa/blog-kerja-praktek-v2.git digital-training
 - serach jquery ajax
 - simple pagination
 - counting visitor artikel
+- report contact us [pdf]
+- simple reporting
+- simple chartjs diagram
 
 ### what tech i'm use ?
 
