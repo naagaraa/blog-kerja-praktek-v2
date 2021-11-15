@@ -73,6 +73,7 @@ git clone https://github.com/naagaraa/blog-kerja-praktek-v2.git digital-training
 - template
   - cms bootsrap v3
   - blo bootsrap v4
+- text editor -> ckeditor
 
 ### requiretment
 
